@@ -1,20 +1,27 @@
 box::use(
-  utils[read.csv]
+  utils[read.csv],
+  here,
+  dplyr[mutate],
+  lubridate[year,wday]
 )
 
-box::use(
-  here
-)
 
 
 #' @export
 fetch_train <- function(){
-  read.csv(here::here("data","train.csv"))
+  train <- read.csv(here::here("data","train.csv"))
+  train <- train[order(as.Date(train$Date, format="%Y-%m-%d")),]
+  train |>
+    mutate(Year = year(Date)) |>
+    mutate(Day = wday(Date,label = TRUE,abbr = TRUE)) -> train
+  train
 }
 
 #' @export
 fetch_test <- function(){
-  read.csv(here::here("data","test.csv"))
+  test <- read.csv(here::here("data","test.csv"))
+  test <- test[order(as.Date(test$Date, format="%Y-%m-%d")),]
+  test
 }
 
 #' @export
