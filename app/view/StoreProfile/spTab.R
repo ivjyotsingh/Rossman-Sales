@@ -38,8 +38,10 @@ ui <- function(id) {
                     )
            ),
            fluidRow(
+             column(12,
              Cards$card3("Sales and Customers",
                          echarts4rOutput(ns("salcust")))
+             )
            )
   )
 }

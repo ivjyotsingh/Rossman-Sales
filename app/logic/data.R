@@ -29,6 +29,17 @@ fetch_sample <- function(){
 
 #' @export
 fetch_store <- function(){
-  read_csv(here::here("data","store.csv"),show_col_types = FALSE,progress = FALSE)
+  store <- read_csv(here::here("data","store.csv"),show_col_types = FALSE,progress = FALSE)
+  
+  store |>
+    mutate(Store_Model = ifelse(StoreType == "a","A",
+                         ifelse(StoreType == "b","B",
+                         ifelse(StoreType == "c","C",
+                         ifelse(StoreType == "d","D","NA"))))) |>
+    mutate(Assortment_Level = ifelse(Assortment == "a","Basic",
+                              ifelse(Assortment == "b","Extra",
+                              ifelse(Assortment == "c","Extended","NA")))) -> store
+  store
+  
 }
 
