@@ -6,7 +6,8 @@ box::use(
 
 box::use(
   app/view/StoreProfile/spTab,
-  app/view/Overview/oTab
+  app/view/Overview/oTab,
+  app/view/PromoImpact/piTab
 )
 
 
@@ -18,7 +19,8 @@ ui <- function(id) {
     "Rossman",
     theme = bs_theme(bootswatch = "zephyr"),
     oTab$ui(ns("otab")),
-    spTab$ui(ns("sptab"))
+    spTab$ui(ns("sptab")),
+    piTab$ui(ns("pitab"))
     )
 }
 
@@ -27,5 +29,6 @@ server <- function(id) {
   moduleServer(id, function(input, output, session) {
     spTab$server("sptab")
     oTab$server("otab")
+    piTab$server("pitab")
   })
 }

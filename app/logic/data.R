@@ -2,7 +2,7 @@ box::use(
   readr[read_csv],
   here,
   dplyr[mutate],
-  lubridate[year,wday]
+  lubridate[year,wday,month]
 )
 
 #' @export
@@ -11,7 +11,8 @@ fetch_train <- function(){
   train <- train[order(as.Date(train$Date, format="%Y-%m-%d")),]
   train |>
     mutate(Year = year(Date)) |>
-    mutate(Day = wday(Date,label = TRUE,abbr = TRUE)) -> train
+    mutate(Day = wday(Date,label = TRUE,abbr = TRUE)) |>
+    mutate(Month = month(Date,label = FALSE)) -> train
   train
 }
 

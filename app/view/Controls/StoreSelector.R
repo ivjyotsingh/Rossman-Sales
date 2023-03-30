@@ -3,7 +3,6 @@ box::use(
 )
 
 #' @export
-
 storeselector <- function(storeargument){
   
   numericInput(inputId = storeargument,
