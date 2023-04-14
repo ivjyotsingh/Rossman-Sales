@@ -7,13 +7,9 @@ box::use(
 
 #' @export
 fetch_train <- function(){
-  train <- read_csv(here::here("data","train.csv"),show_col_types = FALSE,progress = FALSE)
-  train <- train[order(as.Date(train$Date, format="%Y-%m-%d")),]
-  train |>
-    mutate(Year = year(Date)) |>
-    mutate(Day = wday(Date,label = TRUE,abbr = TRUE)) |>
-    mutate(Month = month(Date,label = FALSE)) -> train
-  train
+   
+  read_csv(here::here("data","train.csv"),show_col_types = FALSE,progress = FALSE)
+  
 }
 
 #' @export
