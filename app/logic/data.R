@@ -44,3 +44,11 @@ fetch_store <- function(){
   
 }
 
+
+#' @export
+fetch_SalCust <- function(){
+  
+   read_csv(here::here("data","SalCust.csv"),show_col_types = FALSE,progress = FALSE)
+
+}
+

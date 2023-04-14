@@ -124,7 +124,7 @@ server <- function(id) {
     
     output$salcust <- renderEcharts4r ({
       
-        data$fetch_train() |>
+        data$fetch_SalCust() |>
         filter(Store == input$store_select) |>
         echarts4r::group_by(Year) |>
         e_charts(Date,timeline = TRUE) |>
