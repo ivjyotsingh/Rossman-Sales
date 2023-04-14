@@ -32,17 +32,21 @@ ui <- function(id) {
                     column(3,
                            card(
                              height = 480,
+                             full_screen = TRUE,
                              card_header("Store Models"),
                              card_body_fill(StoreModelDonut$ui(ns("smd")))
                            )),
                     column(3,
                            card(
                              height = 480,
+                             full_screen = TRUE,
                              card_header("Assortment Levels"),
                              card_body_fill(AssortmentLevelDonut$ui(ns("ald")))
                            )),
                     column(6,
-                           card(height = 480,
+                           card(
+                           height = 480,
+                           full_screen = TRUE,
                            card_header("Interaction between Store Models and Assortment Levels"),
                            card_body_fill(Interaction$ui(ns("int")))
                            ))

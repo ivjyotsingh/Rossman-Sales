@@ -20,7 +20,7 @@ card2 <- function(){
   value_box(
     title = "Assortment Levels",
     value = "3",
-    showcase = bs_icon("shop")
+    showcase = bs_icon("bar-chart")
   )
   
 }
@@ -43,6 +43,6 @@ card4 <- function(){
   value_box(
     title = "Stores with Promo",
     value = "571",
-    showcase = bs_icon("globe-europe-africa")
+    showcase = bs_icon("currency-exchange")
   )
 } 

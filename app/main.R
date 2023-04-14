@@ -17,7 +17,7 @@ ui <- function(id) {
   ns <- NS(id)
     navbarPage(
     "Rossman",
-    theme = bs_theme(bootswatch = "zephyr"),
+    theme = bs_theme(bootswatch = "darkly"),
     oTab$ui(ns("otab")),
     spTab$ui(ns("sptab")),
     piTab$ui(ns("pitab"))

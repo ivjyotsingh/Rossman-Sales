@@ -5,7 +5,8 @@ box::use(
 box::use(
   shiny[NS,moduleServer],
   dplyr[select,group_by,summarise,n],
-  echarts4r[e_charts,e_pie,e_tooltip,e_title,echarts4rOutput,renderEcharts4r]
+  echarts4r[e_charts,e_pie,e_tooltip,e_title,echarts4rOutput,renderEcharts4r,
+            e_theme,e_group,e_connect_group,e_toolbox_feature]
 )
 
 #' @export
@@ -29,7 +30,13 @@ server <- function(id) {
       e_charts(Store_Model) |>
       e_pie(Stores,
             radius = c("20%","50%")) |>
-      e_tooltip() 
+      e_tooltip(trigger = "item") |>
+      e_theme("westeros") |>
+      e_group("grp") |>
+      e_connect_group("grp") |>
+      e_toolbox_feature(
+        feature = "saveAsImage"
+      )
     
       })
   })

@@ -13,7 +13,8 @@ box::use(
         reactive,selectInput],
   bslib[card,card_header,card_body_fill,navs_tab_card,nav,card_title],
   dplyr[filter,select,pull],
-  echarts4r[e_charts,e_calendar,e_heatmap,e_visual_map,echarts4rOutput,renderEcharts4r]
+  echarts4r[e_charts,e_calendar,e_heatmap,e_visual_map,echarts4rOutput,
+            renderEcharts4r,e_theme,e_tooltip,e_show_loading,e_toolbox_feature]
 )
 
 #' @export
@@ -34,7 +35,7 @@ ui <- function(id) {
              column(4,
                     navs_tab_card(
                       height = 500,full_screen = TRUE,
-                      title = "Variables",
+                      title = "Independent Variables",
                       nav(
                         "Promo",
                         card_title("Days with Promo applied"),
@@ -50,7 +51,7 @@ ui <- function(id) {
              column(4,
                     navs_tab_card(
                       height = 500,full_screen = TRUE,
-                      title = "Outcomes",
+                      title = "Dependent Variables",
                       nav(
                         "Sales",
                         card_title("Total Sales"),
@@ -119,13 +120,21 @@ server <- function(id) {
                    margin = 40
                  ),
                  dayLabel = list(
-                   fontSize = 12
+                   fontSize = 12,
+                   color = "white"
+                 ),
+                 monthLabel = list(
+                   color = "white"
                  )) |>
         e_heatmap(Sales,coord_system = "calendar")|> 
-        e_visual_map(max = maxSval(),
-                     inRange = list(
-                       color = c("#FFFFFF","#0571B0")
-                     ))
+        e_visual_map(max = maxSval()
+                    )|>
+        e_theme("westeros") |>
+        e_tooltip(trigger = "item") |>
+        e_show_loading()|>
+        e_toolbox_feature(
+          feature = "saveAsImage"
+        )
       
       
     })
@@ -143,13 +152,21 @@ server <- function(id) {
                      margin = 40
                    ),
                    dayLabel = list(
-                     fontSize = 12
+                     fontSize = 12,
+                     color = "white"
+                   ),
+                   monthLabel = list(
+                     color = "white"
                    )) |>
         e_heatmap(Customers,coord_system = "calendar")|> 
-        e_visual_map(max = maxCval(),
-                     inRange = list(
-                       color = c("#FFFFFF","#0571B0")
-                     ))
+        e_visual_map(max = maxCval()
+                     )|>
+        e_theme("westeros")|>
+        e_tooltip(trigger = "item")|>
+        e_show_loading()|>
+        e_toolbox_feature(
+          feature = "saveAsImage"
+        )
       
       
     })
@@ -166,13 +183,21 @@ server <- function(id) {
                      margin = 40
                    ),
                    dayLabel = list(
-                     fontSize = 12
+                     fontSize = 12,
+                     color = "white"
+                   ),
+                   monthLabel = list(
+                     color = "white"
                    )) |>
         e_heatmap(Promo,coord_system = "calendar")|> 
-        e_visual_map(max = 1,
-                     inRange = list(
-                       color = c("#FFFFFF","#F4A582")
-                     ))
+        e_visual_map(max = 1
+                     )|>
+        e_theme("westeros")|>
+        e_tooltip(trigger = "item")|>
+        e_show_loading()|>
+        e_toolbox_feature(
+          feature = "saveAsImage"
+        )
       
       
     })
@@ -189,13 +214,21 @@ server <- function(id) {
                      margin = 40
                    ),
                    dayLabel = list(
-                     fontSize = 12
+                     fontSize = 12,
+                     color = "white"
+                   ),
+                   monthLabel = list(
+                     color = "white"
                    )) |>
         e_heatmap(SchoolHoliday,coord_system = "calendar")|> 
-        e_visual_map(max = 1,
-                     inRange = list(
-                       color = c("#FFFFFF","#F4A582")
-                     ))
+        e_visual_map(max = 1
+                     )|>
+        e_theme("westeros")|>
+        e_tooltip(trigger = "item")|>
+        e_show_loading()|>
+        e_toolbox_feature(
+          feature = "saveAsImage"
+        )
       
       
     })

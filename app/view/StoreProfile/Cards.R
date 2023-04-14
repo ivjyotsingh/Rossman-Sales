@@ -33,6 +33,7 @@ card3 <- function(titleArg,plotArg){
   
   card(
     height = 400,
+    full_screen = TRUE,
     card_header(titleArg),
     card_body_fill(plotArg)
   )
